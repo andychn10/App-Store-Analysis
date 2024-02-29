@@ -42,14 +42,14 @@ ORDER BY NumApps DESC
 -- Summarize app ratings --
 
 SELECT min(user_rating) AS MinRating,
-	   max(user_rating) AS MaxRating,
+       max(user_rating) AS MaxRating,
        avg(user_rating) AS AvgRating
 FROM AppleStore
 
 -- Basic summary of paid apps --
 
 SELECT min(price) AS MinPrice,
-	   max(price) AS MaxPrice,
+       max(price) AS MaxPrice,
        avg(price) AS AvgPrice
 FROM AppleStore
 WHERE price > 0
@@ -57,9 +57,9 @@ WHERE price > 0
 -- Distribution of App Prices --
 
 SELECT
-	(price / 2) *2 AS PriceBinStart,
-    ((price / 2) *2) +2 AS PriceBinEnd,
-    COUNT(*) AS NumApps
+      (price / 2) *2 AS PriceBinStart,
+      ((price / 2) *2) +2 AS PriceBinEnd,
+      COUNT(*) AS NumApps
 FROM AppleStore
 GROUP BY PriceBinStart
 ORDER BY PriceBinStart
