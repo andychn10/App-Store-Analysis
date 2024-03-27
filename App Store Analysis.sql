@@ -106,6 +106,34 @@ GROUP BY prime_genre
 ORDER BY Avg_Rating DESC
 LIMIT 5
 
+-- Check genres with low ratings for paid apps (500 reviews min.) --
+
+SELECT prime_genre,
+       avg(user_rating) AS Avg_Rating
+FROM AppleStore
+where price > 0 and rating_count_tot > 500
+GROUP BY prime_genre
+ORDER BY Avg_Rating ASC
+LIMIT 10
+
+-- Check genres with low ratings for apps $10 or more (500 reviews min.) --
+SELECT prime_genre,
+       avg(user_rating) AS Avg_Rating
+FROM AppleStore
+where rating_count_tot > 500 and price > 9.99
+GROUP BY prime_genre
+ORDER BY Avg_Rating ASC
+LIMIT 10
+
+-- Genres with low ratings for Paid Apps with 10,000 review or more --
+SELECT prime_genre,
+       avg(user_rating) AS Avg_Rating
+FROM AppleStore
+where price > 0 and rating_count_tot > 10000
+GROUP BY prime_genre
+ORDER BY Avg_Rating ASC
+LIMIT 10
+
 -- Check top-rated apps for each genre --
 
 SELECT
